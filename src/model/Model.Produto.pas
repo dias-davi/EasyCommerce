@@ -14,12 +14,11 @@ type
     FEstoque: Double;
     FStatusProduto: Boolean;
 
-    procedure SetDescricao(const Value: string);
+    procedure SetDescricao(const Value: string);
     procedure SetCodigoDeBarras(const Value: string);
     procedure SetPreco(const Value: Currency);
     procedure SetEstoque(const Value: Double);
     procedure SetProdutoAtivo(const Value: Boolean);
-
 
   public
     constructor CreateComID(AID: TGUID);
@@ -35,8 +34,7 @@ implementation
 
 constructor TProdutoModel.CreateComID(AID: TGUID);
 begin
-  inherited Create;
-  SetId(AID);
+  inherited;
 end;
 
 procedure TProdutoModel.SetCodigoDeBarras(const Value: string);

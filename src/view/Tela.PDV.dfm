@@ -96,14 +96,11 @@ object frmPDV: TfrmPDV
       Width = 392
       Height = 303
       Align = alClient
-      Caption = 'pnlValores'
       TabOrder = 1
-      ExplicitLeft = 416
-      ExplicitWidth = 409
       object grpValores: TGroupBox
-        Left = 98
+        Left = 40
         Top = 32
-        Width = 224
+        Width = 282
         Height = 217
         Caption = 'Valores'
         TabOrder = 0
@@ -134,7 +131,7 @@ object frmPDV: TfrmPDV
         object grpDescontoFinal: TGroupBox
           Left = 16
           Top = 77
-          Width = 192
+          Width = 249
           Height = 79
           Caption = 'Desconto'
           TabOrder = 2
@@ -171,10 +168,6 @@ object frmPDV: TfrmPDV
     Height = 360
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = 8
-    ExplicitTop = 367
-    ExplicitWidth = 681
-    ExplicitHeight = 546
     object strngrdProdutos: TStringGrid
       Left = 1
       Top = 1
@@ -187,9 +180,7 @@ object frmPDV: TfrmPDV
       Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goFixedRowDefAlign]
       TabOrder = 0
       ExplicitLeft = 2
-      ExplicitTop = 6
-      ExplicitWidth = 901
-      ExplicitHeight = 550
+      ExplicitTop = 5
       ColWidths = (
         64
         233

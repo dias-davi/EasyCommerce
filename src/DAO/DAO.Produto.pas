@@ -22,7 +22,8 @@ type
   end;
 
 implementation
-
+uses
+  FireDac.Stan.Param, Data.DB;
 { TProdutoDAO }
 
 constructor TProdutoDAO.Create(AConnection: TFDConnection);
@@ -50,7 +51,7 @@ begin
       'WHERE id = :id';
 
 
-    LQuery.ParamByName('id').AsString := GUIDToString(AProduto.ID);
+    LQuery.ParamByName('id').AsGUID := AProduto.ID;
     LQuery.ParamByName('descricao').AsString := AProduto.Descricao;
     LQuery.ParamByName('preco').AsCurrency := AProduto.Preco;
     LQuery.ParamByName('estoque').AsFloat := AProduto.Estoque;
@@ -76,7 +77,7 @@ begin
       'DELETE FROM produto '+
       '  WHERE id = :id';
 
-    LQuery.ParamByName('id').AsString := GUIDToString(AID);
+    LQuery.ParamByName('id').AsGUID := AID;
     LQuery.ExecSQL;
   finally
     LQuery.Free;
@@ -98,7 +99,7 @@ begin
       ' :id, :descricao, :preco, :estoque, :status_produto ' +
       ')';
 
-    LQuery.ParamByName('id').AsString := GUIDToString(AProduto.ID);
+    LQuery.ParamByName('id').AsGUID := AProduto.ID;
     LQuery.ParamByName('descricao').AsString := AProduto.Descricao;
     LQuery.ParamByName('preco').AsCurrency := AProduto.Preco;
     LQuery.ParamByName('estoque').AsFloat := AProduto.Estoque;
@@ -134,8 +135,7 @@ begin
     begin
       //LProduto := TProdutoModel.Create;
 
-			LProduto := TProdutoModel.CreateComId(
-      							StringToGUID(LQuery.FieldByName('id').AsString));
+			LProduto := TProdutoModel.CreateComId(LQuery.FieldByName('id').AsGUID);
 
       LProduto.Descricao := LQuery.FieldByName('descricao').AsString;
 			LProduto.Preco := LQuery.FieldByName('preco').AsCurrency;
@@ -148,5 +148,6 @@ begin
     LQuery.Free;
   end;
 end;
+
 
 end.

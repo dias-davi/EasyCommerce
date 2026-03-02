@@ -16,6 +16,7 @@ type
     btnTestes: TButton;
     procedure btnPDVClick(Sender: TObject);
     procedure btnTestesClick(Sender: TObject);
+    procedure btnEstoqueClick(Sender: TObject);
 
   private
 
@@ -30,9 +31,14 @@ var
 
 implementation
 uses
-  Tela.PDV, Tela.Testes;
+  Tela.PDV, Tela.Testes, Tela.Produtos;
 
 {$R *.dfm}
+
+procedure TfrmInicio.btnEstoqueClick(Sender: TObject);
+begin
+  frmProdutos.ShowModal;
+end;
 
 procedure TfrmInicio.btnPDVClick(Sender: TObject);
 begin

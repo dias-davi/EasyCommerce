@@ -3,9 +3,9 @@ unit Tela.PDV;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Vcl.Mask, Vcl.ExtCtrls,
-  Vcl.StdCtrls, model.Produto;
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
+  Vcl.Grids, Vcl.Mask, Vcl.ExtCtrls, Vcl.StdCtrls, model.Produto;
 
 type
   TfrmPDV = class(TForm)

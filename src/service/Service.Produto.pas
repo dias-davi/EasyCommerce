@@ -3,18 +3,66 @@ unit Service.Produto;
 interface
 
 uses
-	System.SysUtils, Model.Produto, DAO.Produto;
+  System.SysUtils, FireDAC.Comp.Client, Model.Produto, DAO.Produto;
 
-
-type TProdutoService = class
+type
+  TProdutoService = class
   private
-
-  protected
-
+    FConnection: TFDConnection;
   public
+    constructor Create(AConnection: TFDConnection);
 
-end;
+    procedure Salvar(AProduto: TProdutoModel);
+    procedure Excluir(AID: TGUID);
+    function ObterPorID(AID: TGUID): TProdutoModel;
+  end;
 
 implementation
+
+{ TProdutoService }
+
+constructor TProdutoService.Create(AConnection: TFDConnection);
+begin
+  FConnection := AConnection;
+end;
+
+procedure TProdutoService.Salvar(AProduto: TProdutoModel);
+var
+  LDAO: TProdutoDAO;
+begin
+  LDAO := TProdutoDAO.Create(FConnection);
+  try
+    if AProduto.ID = TGUID.Empty then
+      LDAO.Inserir(AProduto)
+    else
+      LDAO.Atualizar(AProduto);
+  finally
+    LDAO.Free;
+  end;
+end;
+
+procedure TProdutoService.Excluir(AID: TGUID);
+var
+  LDAO: TProdutoDAO;
+begin
+  LDAO := TProdutoDAO.Create(FConnection);
+  try
+    LDAO.Excluir(AID);
+  finally
+    LDAO.Free;
+  end;
+end;
+
+function TProdutoService.ObterPorID(AID: TGUID): TProdutoModel;
+var
+  LDAO: TProdutoDAO;
+begin
+  LDAO := TProdutoDAO.Create(FConnection);
+  try
+    Result := LDAO.ObterPorID(AID);
+  finally
+    LDAO.Free;
+  end;
+end;
 
 end.

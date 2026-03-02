@@ -32,6 +32,7 @@ object frmInicio: TfrmInicio
       Height = 100
       Caption = 'Estoque'
       TabOrder = 0
+      OnClick = btnEstoqueClick
     end
     object btnPDV: TButton
       Left = 32

@@ -7,42 +7,33 @@ uses
 
 type
   TEntity = class
+
   private
     FID: TGUID;
-    procedure CreateComID(AID: TGUID);
 
   protected
-    procedure GerarID;
-    procedure SetID(const Value: TGUID);
 
   public
-    constructor Create;
+    constructor Create; overload;
+    constructor Create(AID: TGUID); overload;
 
     property ID: TGUID read FID;
   end;
 
 implementation
 
-procedure TEntity.CreateComID(AID: TGUID);
-begin
-  SetId(AID);
-end;
-
 constructor TEntity.Create;
 begin
-  inherited;
-  FID := TGUID.NewGuid;
+  FID := TGUID.NewGuid
 end;
 
-procedure TEntity.GerarID;
+constructor TEntity.Create(AID: TGUID);
 begin
-  if CreateGUID(FID) <> 0 then
-    raise Exception.Create('Erro ao gerar GUID');
+  if AID.IsEmpty then
+  	FID := TGUID.NewGuid
+  else
+  	FID := AID;
 end;
 
-procedure TEntity.SetID(const Value: TGUID);
-begin
-  FID := Value;
-end;
 
 end.
